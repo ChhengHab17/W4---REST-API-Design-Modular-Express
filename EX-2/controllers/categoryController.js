@@ -41,7 +41,7 @@ const deleteCategory = (req, res) => {
 const getArtByCategory = (req, res) => {
     const categoryId = parseInt(req.params.id);
     const article = articles.filter(c => c.categoryId === categoryId);
-    if (!article) return res.status(404).json({ error: 'No Articles found'});
+    if (article.length === 0) return res.status(404).json({ error: 'No Articles found'});
     res.json(article);
 }
 

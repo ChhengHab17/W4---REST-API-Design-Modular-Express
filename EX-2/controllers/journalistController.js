@@ -43,7 +43,7 @@ const deleteJournalist = (req, res) => {
 const getArtByJournalist = (req, res) => {
     const jourId = parseInt(req.params.id);
     const article = articles.filter(a => a.journalistId === jourId);
-    if (!article) return res.status(404).json({ error: 'No Articles found'});
+    if (article.length === 0) return res.status(404).json({ error: 'No Articles found'});
     res.json(article);
 }
 
